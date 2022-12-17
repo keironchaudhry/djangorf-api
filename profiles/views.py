@@ -1,3 +1,4 @@
+from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Profile
@@ -18,3 +19,12 @@ class ProfileList(APIView):
         return Response(
             serializer.data
         )
+
+
+class ProfileDetail(APIView):
+    def get_object(self, pk):
+        try:
+            profile = profile.objects.get(pk=pk)
+            return profile
+        except Profile.DoesNotExist:
+            raise Http404
