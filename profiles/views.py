@@ -36,7 +36,8 @@ class ProfileDetail(APIView):
             profile = Profile.objects.get(
                 pk=pk
             )
-            # Accesses the permissions class created to validate user permissions
+            # Accesses the permissions class created
+            # to validate user permissions
             self.check_object_permissions(
                 self.request,
                 profile
