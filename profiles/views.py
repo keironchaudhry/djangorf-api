@@ -16,7 +16,10 @@ class ProfileList(APIView):
         profiles = Profile.objects.all()
         serializer = ProfileSerializer(
             profiles,
-            many=True
+            many=True,
+            context={
+                'request': request
+            }
         )
         return Response(
             serializer.data
@@ -50,7 +53,12 @@ class ProfileDetail(APIView):
     # serialize said data into readable JSON code
     def get(self, request, pk):
         profile = self.get_object(pk)
-        serializer = ProfileSerializer(profile)
+        serializer = ProfileSerializer(
+            profile,
+            context={
+                'request': request
+            }
+        )
         return Response(
             serializer.data
         )
@@ -62,7 +70,10 @@ class ProfileDetail(APIView):
         profile = self.get_object(pk)
         serializer = ProfileSerializer(
             profile,
-            data=request.data
+            data=request.data,
+            context={
+                'request': request
+            }
         )
         if serializer.is_valid():
             serializer.save()
