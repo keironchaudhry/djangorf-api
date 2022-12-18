@@ -8,8 +8,9 @@ class ProfileSerializer(serializers.ModelSerializer):
     )
     is_owner = serializers.SerializerMethodField()
 
-    # Allows to request object, and is referred to
-    # throughout views.py file where there are serializers
+    # Allows to request owner identification of
+    # profile object, and is referred to throughout
+    # views.py file where there are serializers
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
