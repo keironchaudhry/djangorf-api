@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import Profile
 from .serializers import ProfileSerializer
+from drf_api.permissions import IsOwnerOrReadOnly
 
 
 class ProfileList(APIView):
@@ -25,6 +26,8 @@ class ProfileList(APIView):
 class ProfileDetail(APIView):
     # Allows serialized code to be modified with a form
     serializer_class = ProfileSerializer
+    # Inherits the permission class created and imported in this file
+    permission_classes = [IsOwnerOrReadOnly]
 
     # Simple get object method to obtain actual
     # profile object or return an error page
@@ -32,6 +35,11 @@ class ProfileDetail(APIView):
         try:
             profile = Profile.objects.get(
                 pk=pk
+            )
+            # Accesses the permissions class created to validate user permissions
+            self.check_object_permissions(
+                self.request,
+                profile
             )
             return profile
         except Profile.DoesNotExist:
