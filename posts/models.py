@@ -25,7 +25,9 @@ class Post(models.Model):
     )
     image = models.ImageField(
         upload_to='images/',
-        default='https://res.cloudinary.com/twiggygnome/image/upload/v1671104642/samples/default_post_tdpdob.jpg',
+        default=(
+            'https://res.cloudinary.com/twiggygnome/image/upload/v1671104642/samples/default_post_tdpdob.jpg'
+        ),
         blank=True
     )
 
