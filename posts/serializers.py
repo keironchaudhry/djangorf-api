@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Post
 
 
-class ProfileSerializer(serializers.ModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(
         source='owner.username'
     )
