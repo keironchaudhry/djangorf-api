@@ -14,6 +14,21 @@ class ProfileSerializer(serializers.ModelSerializer):
         owner.profile.image.url
     )
 
+    def validate_image(self, value):
+        if value.size > 1024 * 1024 * 2:
+            raise serializers.ValidationError(
+                'Image size larger than 2MB!'
+            )
+        if value.size.width > 4096:
+            raise serializers.ValidationError(
+                'Image width larger than 4096px!'
+            )
+        if value.size.height > 4096:
+            raise serializers.ValidationError(
+                'Image height larger than 4096px!'
+            )
+        return value
+
     def get_is_owner(self, obj):
         request = self.context['request']
         return request.user == obj.owner
@@ -31,4 +46,5 @@ class ProfileSerializer(serializers.ModelSerializer):
             'title',
             'content',
             'image',
+            'image_filter'
         ]
