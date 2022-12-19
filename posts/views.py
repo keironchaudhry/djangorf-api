@@ -11,7 +11,7 @@ class PostList(APIView):
         posts = Post.objects.all()
         # Serialize them,
         serializer = PostSerializer(
-            post,
+            posts,
             many=True,
             context={'request': request}
         )

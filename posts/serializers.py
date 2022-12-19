@@ -8,10 +8,10 @@ class PostSerializer(serializers.ModelSerializer):
     )
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(
-        owner.profile.id
+        source='owner.profile.id'
     )
     profile_image = serializers.ReadOnlyField(
-        owner.profile.image.url
+        source='owner.profile.image.url'
     )
 
     def validate_image(self, value):

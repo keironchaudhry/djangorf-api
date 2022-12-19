@@ -33,4 +33,10 @@ urlpatterns = [
             'profiles.urls'
         )
     ),
+    path(
+        '',
+        include(
+            'posts.urls'
+        )
+    ),
 ]
