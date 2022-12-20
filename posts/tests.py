@@ -60,3 +60,25 @@ class PostListViewTests(APITestCase):
             response.status_code,
             status.HTTP_403_FORBIDDEN
         )
+
+
+class PostDetailViewTests(APITestCase):
+    def setUp(self):
+        test_droid_1 = User.objects.create_user(
+            username='test_droid_1',
+            password='test_password'
+        )
+        test_droid_2 = User.objects.create_user(
+            username='test_droid_2',
+            password='test_password'
+        )
+        Post.object.create(
+            owner=test_droid_1,
+            title='test title',
+            content='test droid 1 content'
+        )
+        Post.object.create(
+            owner=test_droid_2,
+            title='test title',
+            content='test droid 2 content'
+        )
