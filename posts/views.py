@@ -87,7 +87,7 @@ class PostDetail(APIView):
 
     def put(self, request, pk):
         post = self.get_object(pk)
-        serializer = ProfileSerializer(
+        serializer = PostSerializer(
             post,
             data=request.data,
             context={
