@@ -124,3 +124,22 @@ class PostDetailViewTests(APITestCase):
             response.status_code,
             status.HTTP_200_OK
         )
+
+    def test_user_cant_update_another_users_post(self):
+        self.client.login(
+            username='test_droid_2',
+            password='test_password'
+        )
+        response = self.client.put(
+            '/posts/1/',
+            {'title': 'a sneaky title'}
+        )
+        post = Post.objects.filter(pk=1).first()
+        self.assertEqual(
+            post.title,
+            'test title'
+        )
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_403_FORBIDDEN
+        )
