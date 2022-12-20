@@ -28,3 +28,21 @@ class PostListViewTests(APITestCase):
         )
         print(response.data)
         print(len(response.data))
+
+    def test_logged_in_user_can_create_post(self):
+        self.client.login(
+            username='test_user',
+            password='test_password'
+        )
+        response = self.client.post(
+            '/posts/',
+            {'title': 'test title'}
+        )
+        count = Post.objects.count()
+        self.assertEqual(
+            count, 1
+        )
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_201_CREATED
+        )
