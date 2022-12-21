@@ -7,7 +7,7 @@ class FollowerSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(
         source='owner.username'
     )
-    followed_name = ReadOnlyField(
+    followed_name = serializers.ReadOnlyField(
         source='followed.username'
     )
 
