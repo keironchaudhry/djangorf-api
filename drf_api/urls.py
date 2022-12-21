@@ -39,4 +39,10 @@ urlpatterns = [
             'posts.urls'
         )
     ),
+    path(
+        '',
+        include(
+            'user_comments.urls'
+        )
+    ),
 ]

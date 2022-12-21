@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'profiles',
     'posts',
-    'user_comments'
+    'user_comments',
 ]
 
 MIDDLEWARE = [
