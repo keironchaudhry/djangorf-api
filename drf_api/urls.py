@@ -45,4 +45,10 @@ urlpatterns = [
             'user_comments.urls'
         )
     ),
+    path(
+        '',
+        include(
+            'likes.urls'
+        )
+    ),
 ]
