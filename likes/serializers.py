@@ -9,7 +9,7 @@ class LikeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Like
-        fields [
+        fields = [
             'id',
             'owner',
             'post',
