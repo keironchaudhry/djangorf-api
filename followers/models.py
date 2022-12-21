@@ -31,4 +31,4 @@ class Follower(models.Model):
         ]
 
     def __str__(self):
-        f'{self.owner}, {self.followed}'
+        return f'{self.owner}, {self.followed}'
