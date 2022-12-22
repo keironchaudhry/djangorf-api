@@ -24,10 +24,13 @@ class ProfileList(generics.ListAPIView):
             distinct=True
         )
     ).order_by('-created_at')
+
     serializer_class = ProfileSerializer
+
     filters_backend = [
         filters.OrderingFilter
     ]
+
     ordering_fields = [
         'posts_count',
         'followers_count',
