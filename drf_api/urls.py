@@ -32,7 +32,7 @@ urlpatterns = [
             'rest_framework.urls'
         )
     ),
-    # logout route must be placed above 
+    # logout route must be placed above
     # default dj-rest-auth to be matched first
     path(
         'dj-rest-auth/logout/',
