@@ -61,7 +61,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
-    'djangorf-api.herokuapp.com',
+    'djangofw-api.herokuapp.com',
     'localhost',
 ]
 
