@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from .settings import (
     JWT_AUTH_COOKIE,
     JWT_AUTH_REFRESH_COOKIE,
-    JW_AUTH_SAMESITE,
+    JWT_AUTH_SAMESITE,
     JWT_AUTH_SECURE
 )
 
